@@ -1,2 +1,2 @@
 # learnable-web3-task7
-Todo List
+A simple Todo List that implements CRUD operations.
