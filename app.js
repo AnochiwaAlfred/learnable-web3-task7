@@ -12,7 +12,6 @@ var allList = document.querySelector("#allList")
 
 
 document.addEventListener("DOMContentLoaded", function() {
-  // Add event listeners for Mark Incomplete and Delete buttons
   document.querySelectorAll('.mark-completed-btn').forEach(button => {
     button.addEventListener('click', markCompletedHandler);
   });
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
     button.addEventListener('click', preEditHandler);
   });
 
-  // Add event listeners for Mark Incomplete and Delete buttons
   document.querySelectorAll('.mark-incomplete-btn').forEach(button => {
     button.addEventListener('click', markIncompleteHandler);
   });
@@ -40,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function preEditHandler(event) {
     const itemId = event.target.getAttribute('data-item-id');
-    const taskText = document.getElementById(`text-${itemId}`); // Implement a function to get the task text by ID
+    const taskText = document.getElementById(`text-${itemId}`); 
     const todoContentInputEdit = document.getElementById(`todoContentEdit-${itemId}`);
     const textttt = taskText.innerHTML
     todoContentInputEdit.value = textttt;
@@ -49,15 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Adding a list
-
 function addToDo() {
   var item = todoContent.value
   if (item === "") {
     alert('Please enter your list')
     return
   }
-  // Add to Array
   incompleteToDoList.push(item)
   displayList()
 
@@ -139,11 +134,11 @@ function markCompletedHandler(id) {
   listItem = document.getElementById(id)
   let itemText = listItem.querySelector("span").innerText;
   console.log(itemText);
-  //add to the array of completed tasks
+
   if (!completeToDoList.includes(itemText)) {
     completeToDoList.push(itemText);
   }
-  // remove from the array of incompleted tasks
+
   if (incompleteToDoList.includes(itemText)) {
     let index = incompleteToDoList.indexOf(itemText);
     incompleteToDoList.splice(index, 1);
@@ -157,11 +152,11 @@ function markIncompletedHandler(id) {
   listItem = document.getElementById(id)
   let itemText = listItem.querySelector("span").innerText;
   console.log(itemText);
-  //add to the array of incompleted tasks
+
   if (!incompleteToDoList.includes(itemText)) {
     incompleteToDoList.push(itemText);
   }
-  // remove from the array of completed tasks
+
   if (completeToDoList.includes(itemText)) {
     let index = completeToDoList.indexOf(itemText);
     completeToDoList.splice(index, 1);
@@ -187,7 +182,7 @@ function deleteHandler(id) {
 function deleteHandlerCompleted(id) {
   listItem = document.getElementById(id)
   let itemText = listItem.querySelector("span").innerText;
-  // remove from the array of completed tasks
+
   if (completeToDoList.includes(itemText)) {
     let index = completeToDoList.indexOf(itemText);
     completeToDoList.splice(index, 1);
